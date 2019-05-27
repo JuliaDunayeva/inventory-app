@@ -2,10 +2,16 @@
 <div class="content">
   <div class="header">{{ product.name }}</div>
   <div class="meta">
-    <div class="product-sku">SKU #{{ product.sku }}</div>
+    <div class="product-sku">{{ product.sku }}</div>
   </div>
   <div class="description">
     <product-department [product]="product"></product-department>
   </div>
 </div>
+<div *ngIf="product.isSold ; else notSold">
+    <i class="circle icon" [ngStyle]="{color: 'green'}"></i>
+</div>
+<ng-template #notSold>
+    <i class="circle icon" [ngStyle]="{color: 'red'}"></i>
+</ng-template>
 <price-display [price]="product.price"></price-display>
